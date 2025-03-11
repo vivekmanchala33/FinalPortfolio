@@ -1,0 +1,94 @@
+{
+    "origin": [
+        "#intro#",
+        "#conflict#",
+        "#twist#",
+        "#resolution#"
+    ],
+    "intro": [
+        "A #adjective# #noun# stood on the #noun# gazing into the #noun#.",
+        "Through the #adjective# mist, the #noun# appeared, its #noun# glistening.",
+        "The #adjective# crew prepared their #noun# as the #noun# loomed closer."
+    ],
+    "conflict": [
+        "The #noun# #verb# the #noun#, but the sea was #adjective#.",
+        "A sudden #noun# caused the #noun# to #verb# violently.",
+        "The #adjective# storm threatened to #verb# the entire crew."
+    ],
+    "twist": [
+        "But the #noun# was not what it seemed—it was #adjective# and full of #noun#.",
+        "The #noun# uncovered a #noun# hidden within the #noun#.",
+        "A message from the #noun# revealed the truth about the #noun#."
+    ],
+    "resolution": [
+        "In the end, the #noun# #verb# the #noun# and found #noun#.",
+        "The sea, now #adjective#, carried the #noun# back home.",
+        "The #noun# disappeared into the #noun#, leaving only #noun# behind."
+    ],
+    "noun": [
+        "ship",
+        "whale",
+        "captain",
+        "storm",
+        "ocean",
+        "crew",
+        "deck",
+        "harpoon",
+        "voyage",
+        "beast",
+        "wave",
+        "sailor",
+        "mast",
+        "horizon",
+        "voyager",
+        "gale",
+        "current",
+        "legend",
+        "abyss",
+        "depths"
+    ],
+    "verb": [
+        "sailed",
+        "hunted",
+        "chased",
+        "plunged",
+        "capsized",
+        "fled",
+        "engulfed",
+        "vanished",
+        "roared",
+        "surged",
+        "wrecked",
+        "collapsed",
+        "drowned",
+        "glided",
+        "rescued",
+        "collided",
+        "swallowed",
+        "tumbled",
+        "drifted",
+        "erupted"
+    ],
+    "adjective": [
+        "ominous",
+        "furious",
+        "endless",
+        "relentless",
+        "haunted",
+        "shadowy",
+        "foreboding",
+        "mystical",
+        "raging",
+        "gloomy",
+        "thunderous",
+        "ferocious",
+        "tempestuous",
+        "howling",
+        "whirling",
+        "dark",
+        "chilling",
+        "surging",
+        "savage",
+        "formidable"
+    ]
+}

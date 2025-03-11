@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracery + P5.js Example</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="p5.min.js"></script>
+    <script src="tracery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let grammar;
+        let particles = [];
+        let showIntro = true;
+        let introText = "This was created by Vivek Manchala. The words are from Moby-Dick by Herman Melville and Simple Sabotage Field Manual by the United States Office of Strategic Services, sourced from Project Gutenberg.";
+        let introTimer;
+        let fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana"];
+        let bgColor = 0; // Start with black background
+
+        function preload() {
+            $.getJSON("grammar2.json", function(data) {
+                grammar = tracery.createGrammar(data);
+                introTimer = setTimeout(() => {
+                    showIntro = false;
+                    generateText();
+                    setInterval(generateText, 1500);
+                }, 3000); // Show intro for 3 seconds
+            });
+        }
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            textAlign(CENTER, CENTER);
+        }
+
+        function draw() {
+            background(bgColor);
+            fill(bgColor === 0 ? 255 : 0); // Invert text color based on background
+            
+            if (showIntro) {
+                textWrap(WORD);
+                textSize(24);
+                text(introText, width / 2 - 200, height / 2 - 50, 400);
+                return;
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                fill(p.color);
+                textFont(p.font);
+                textSize(p.size);
+                textWrap(WORD);
+                text(p.text, p.x, p.y, 200); // Multiline text with a width limit
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off the walls and change color, font, and size
+                if (p.x < 0 || p.x > width - 200) {
+                    p.vx *= -1;
+                    p.color = color(random(255), random(255), random(255));
+                    p.font = random(fonts);
+                    p.size = random(16, 48); // Random font size between small and big
+                }
+                if (p.y < 0 || p.y > height - 50) {
+                    p.vy *= -1;
+                    p.color = color(random(255), random(255), random(255));
+                    p.font = random(fonts);
+                    p.size = random(16, 48); // Random font size between small and big
+                }
+            }
+        }
+
+        function mousePressed() {
+            bgColor = bgColor === 0 ? 255 : 0; // Toggle between black and white background
+        }
+
+        function generateText() {
+            if (grammar) {
+                let outputText = grammar.flatten("#origin#");
+                let x = random(width - 200);
+                let y = random(height - 50);
+                let vx = random(2, 5) * (random() > 0.5 ? 1 : -1);
+                let vy = random(2, 5) * (random() > 0.5 ? 1 : -1);
+                let colorValue = color(random(255), random(255), random(255));
+                let fontValue = random(fonts);
+                let sizeValue = random(16, 48); // Random font size between small and big
+
+                particles.push({ text: outputText, x: x, y: y, vx: vx, vy: vy, color: colorValue, font: fontValue, size: sizeValue });
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
+</body>
+</html>
+
+
+
