@@ -56,7 +56,18 @@ document.querySelector('.project-card:nth-child(3)').addEventListener('click', f
     overlay.style.alignItems = 'center';
 
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://openprocessing.org/sketch/2560538';
+    iframe.srcdoc = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+            <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+        </head>
+        <body style="margin:0">
+            <script src="mySketch.js"></script>
+        </body>
+        </html>
+    `;
     iframe.style.width = '90%';
     iframe.style.height = '90%';
     iframe.style.border = 'none';
